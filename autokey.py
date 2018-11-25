@@ -1,24 +1,42 @@
-""" Doesn't work as intended. Will fix. """
-# def de_cipher(ip_text, op_text, cl):
-#     j = 0
-#     for i in ''.join(ip_text):
-#         if cl == 'e':
-#             op_text.append( alpha[ (alpha.index(i) + alpha.index(keylist[j]))%26 ] )
-#         else:
-#             op_text.append( alpha[ (alpha.index(i) - alpha.index(keylist[j]))%26 ] )
-#         j += 1
-#     return op_text
+alpha = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
-# alpha = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-# ciphertext = deciphertext = keylist = []
-# plaintext = list(input("Enter string to be ciphered.  ").upper())
-# key = list(input("Enter key.  ").upper())
-
-# for i in range(0, len(key)):
-#     keylist.append(key[i])
-# for j in range(0, (len(plaintext)-len(key))):
-#     keylist.append(plaintext[j])
+plaintext = list(input("Enter string to be ciphered. ").upper())
+ciphertext = []
+decryptext = []
+keylist = []
+repeat = "yes"
+while repeat == "yes":
+    key = list(input("Enter word. ").upper())
+    if key == 'a':
+        print("Invalid Key. Please enter again")
+    else:
+        break
+sum = 0
 
 
-# print("Ciphertext:  ", ''.join(de_cipher(plaintext, ciphertext, 'e')))
-# print("Deciphertext:  ", ''.join(de_cipher(ciphertext, deciphertext, 'd')))
+for itr in range(0, len(key)):
+    keylist.append(key[itr])
+for jtr in range(0, (len(plaintext)-len(key))):
+    if ord(plaintext[jtr]) in range(65, 91):
+        keylist.append(plaintext[jtr])
+
+jtr = 0
+#encryption
+for itr in plaintext:
+    if ord(itr) in range(65,91):
+        print(itr, " : ", keylist[jtr])
+        sum = (alpha.index(itr) + alpha.index(keylist[jtr]))%26
+        ciphertext.append(alpha[sum])
+        jtr += 1
+        
+print("Encrypted text: ", ''.join(ciphertext))
+jtr = 0
+
+#decryption
+for itr in (''.join(ciphertext)):
+    if ord(itr) in range(65,91):
+        sum = (alpha.index(itr) - alpha.index(keylist[jtr]))%26
+        decryptext.append(alpha[sum])
+        jtr += 1
+                
+print("Decrypted text: ", ''.join(decryptext).lower())
