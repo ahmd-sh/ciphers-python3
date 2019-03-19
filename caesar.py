@@ -14,7 +14,7 @@ def de_cipher(ip_text, op_text, cl):
 
 
 alpha = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-plaintext = input("Enter the plaintext.  ").upper()
+plaintext = input("Enter the plaintext.  ").lower()
 ciphertext = deciphertext = []
 
 
