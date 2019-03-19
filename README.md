@@ -7,7 +7,7 @@ These are a few ciphers made using [Python 3.6.6](https://www.python.org/downloa
 Prerequisites
 -------------
 
--Python 3.7
+-Python 3.x (3.6 recommended)
 
 -A python compatible IDE (eg. [VSCode](https://code.visualstudio.com/))
 
