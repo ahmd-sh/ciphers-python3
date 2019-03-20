@@ -1,6 +1,8 @@
+import re
 # CAESAR CIPHER
 
 # function to cipher plaintext and decipher ciphered text
+"""
 def de_cipher(ip_text, op_text, cl):
     for i in ip_text:
 
@@ -30,3 +32,30 @@ while True:
 
 print("Ciphertext:  ", ''.join(de_cipher(plaintext, ciphertext, 'e')))
 print("Deciphertext:  ", ''.join(de_cipher(ciphertext, deciphertext, 'd')))
+"""
+
+
+alpha = list("abcdefghijklmnopqrstuvwxyz")
+
+while True:
+    plaintext = list(input("Enter the plaintext.  ").lower())
+    if not re.match("^[a-z]*$", ''.join(plaintext)):
+        print("only a-z allowed!")
+        
+    key = int(input("Enter key (1-25 inclusive).  "))
+    if not re.match("^[1-25]*$", str(key)):
+        print("only vals 1-25 are effective! enter again.")
+    else:
+        break
+
+def caesar(text, key, ty):
+    if ty == "e":    
+        return [alpha[  (alpha.index(x)+key) % 26  ] for x in text]
+    else:
+        return [alpha[  (alpha.index(x)-key) % 26  ] for x in text]
+
+ciphertext = caesar(plaintext, key, "e")
+print("\nCiphered text: ", ''.join(ciphertext))
+
+deciphertext = caesar(ciphertext, key, "d")
+print("Deciphered text: ", ''.join(deciphertext))
