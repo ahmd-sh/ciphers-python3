@@ -6,8 +6,8 @@ def de_cipher(ip_text, op_text, mapping):
         op_text.append(mapping[i])
     return op_text
 
-letters = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-shuffletters = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+letters = list("abcdefghijklmnopqrstuvwxyz")
+shuffletters = list("abcdefghijklmnopqrstuvwxyz")
 random.shuffle(shuffletters)
 key = dict(zip(letters, shuffletters))
 ciphertext = deciphertext = []
@@ -18,7 +18,7 @@ print("The maps:\n")
 for letter, key1 in key.items():
     print(letter, " : ", key1)
 
-plaintext = list(input("\n\nEnter string:  ").upper())
+plaintext = list(input("\n\nEnter string:  ").lower())
 
 print("Ciphertext:  ", ''.join(de_cipher(''.join(plaintext), ciphertext, key)))
 print("Deciphertext:  ", ''.join(de_cipher(''.join(ciphertext), deciphertext, inv_key)))
