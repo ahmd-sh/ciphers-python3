@@ -1,15 +1,15 @@
-alpha = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+alpha = list("abcdefghijklmnopqrstuvwxyz")
 
-plaintext = list(input("Enter string to be ciphered.  ").upper())
-ciphertext = []
-decryptext = []
-key = list(input("Enter word. ").upper())
+plaintext = list(input("Enter string to be ciphered.  ").lower())
+ciphertext = decryptext = []
+key = list(input("Enter word. ").lower())
 sum = 0 #sum of index values of letters in encrption and decryption
 jtr = 0 #loop iterator
 
+
 #encryption
 for itr in plaintext:
-    if ord(itr) in range(65,91):
+    if itr in alpha:
         if jtr == len(key):
             jtr =0
         print(itr, " : ", key[jtr])
@@ -19,6 +19,7 @@ for itr in plaintext:
         
 print("Encrypted text: ", ''.join(ciphertext))
 jtr = 0
+
 
 #decryption
 for itr in (''.join(ciphertext)):
